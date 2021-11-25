@@ -13,6 +13,9 @@
  * |
  */
 $router->get('/', function () use ($router) {
-    // return $router->app->version();
     return view('app');
+});
+
+$router->get('/adicionar', function () use ($router) {
+    return view('add-contact');
 });

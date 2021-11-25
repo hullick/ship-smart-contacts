@@ -24,7 +24,7 @@ const store = new Vuex.Store({
 });
 
 new Vue({
-  el: "#app",
+  el: "#list",
   services: ['$modalService'],
   components: {
 	TheContactsListPage,
