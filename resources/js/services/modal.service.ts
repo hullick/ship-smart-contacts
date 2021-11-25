@@ -1,6 +1,8 @@
 import { ModalEnum } from "../types/modals";
 import * as bootstrap from "bootstrap";
+import { Service } from "typedi";
 
+@Service()
 export default class ModalService {
   private modalsFound = new Map<string, bootstrap.Modal>();
 

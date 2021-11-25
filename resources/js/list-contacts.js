@@ -1,16 +1,12 @@
+import 'reflect-metadata';
+
 import Vue from "vue";
 import TheContactsListPage from "./pages/TheContactsListPage";
 import ConfirmContactDeleteModel from "./modals/ConfirmContactDeleteModel";
-
 import Vuex from 'vuex'
-import Vuec from 'vue-container';
-
-import ModalService from './services/modal.service.ts';
+import { services } from "./import-services.js";
 
 Vue.use(Vuex)
-Vue.use(Vuec);
-
-Vue.$ioc.register('$modalService', new ModalService());
 
 const store = new Vuex.Store({
   state: {
@@ -25,7 +21,7 @@ const store = new Vuex.Store({
 
 new Vue({
   el: "#list",
-  services: ['$modalService'],
+  services: services,
   components: {
 	TheContactsListPage,
 	ConfirmContactDeleteModel
