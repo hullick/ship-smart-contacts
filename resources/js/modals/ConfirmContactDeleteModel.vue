@@ -22,8 +22,12 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
-          Confirmar esta ação irá remover os dados do contato.
+        <div class="modal-body" v-if="this.lastDeletedContact">
+          <p>
+            Confirmar esta ação irá remover os dados do contato de
+            <b>{{ this.lastDeletedContact.name }}</b
+            >.
+          </p>
         </div>
         <div class="modal-footer">
           <button
@@ -43,9 +47,14 @@
 import { Contact } from "../types/contact.ts";
 
 export default {
+  data() {
+    return {
+      lastDeletedContact: undefined,
+    };
+  },
   watch: {
     "$store.state.lastDeletedContact": function () {
-      console.log(123, this.$store.state.lastDeletedContact);
+      this.lastDeletedContact = this.$store.state.lastDeletedContact;
     },
   },
 };

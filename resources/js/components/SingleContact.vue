@@ -6,21 +6,21 @@
     <div class="d-flex flex-row col-10 align-items-center">
       <span class="fs-2 lh-1">{{ contact.name }}</span>
     </div>
-    <delete-contact
+    <the-delete-contact-button
       v-bind:contact="contact"
       class="col-1 rounded"
-    ></delete-contact>
+    ></the-delete-contact-button>
   </div>
 </template>
 <script>
 import { Contact } from "../types/contact.ts";
 import ContactAvatar from "./ContactAvatar";
-import DeleteContact from "./DeleteContact";
+import TheDeleteContactButton from "./TheDeleteContactButton";
 
 export default {
   components: {
     ContactAvatar,
-    DeleteContact,
+    TheDeleteContactButton,
   },
   props: {
     contact: {
