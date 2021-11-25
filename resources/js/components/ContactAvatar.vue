@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { Contact } from "../classes/types.ts";
+import { Contact } from "../types/contact.ts";
 
 export default {
   props: {

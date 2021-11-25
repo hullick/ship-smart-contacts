@@ -31,3 +31,4 @@ composer.lock
 composer.phar
 Thumbs.db
 phpunit.xml
+package-lock.json

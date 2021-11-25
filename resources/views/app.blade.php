@@ -8,31 +8,27 @@
 <link rel="stylesheet" href="./css/app.css" />
 </head>
 <body>
-    <header class="d-flex flex-row">
-      <div class="offset-1 col-1">
-        <a href="./" class="navbar-brand">
-          <!-- HEADER -->
-          <img
-            src="https://shipsmart.com.br/assets/img/logo.png"
-            class="col-12"
-          />
-        </a>
-      </div>
-      <div
-        class="col-10 d-flex flex-row align-items-center justify-content-center"
-      >
-        <span class="fs-1 text-center">Lista de contatos</span>
-      </div>
-    </header>
+	<header class="d-flex flex-row justify-content-center">
+		<div class="col-1">
+			<a href="./" class="navbar-brand"> <!-- HEADER --> <img
+				src="https://shipsmart.com.br/assets/img/logo.png" class="col-12" />
+			</a>
+		</div>
+		<!--       <div -->
+		<!--         class="col-10 d-flex flex-row align-items-center justify-content-center" -->
+		<!--       > -->
+		<!--         <span class="fs-1 text-center">Lista de contatos</span> -->
+		<!--       </div> -->
+	</header>
 	<div id="app">
 		<the-contacts-list-page></the-contacts-list-page>
+		
+		<confirm-contact-delete-model></confirm-contact-delete-model>
 	</div>
-    <footer class="fixed-bottom d-flex justify-content-center">
-      <span class="text-muted"
-        >Desenvolvido por
-        <a href="https://hullick.github.io/">Hullick Bartholo Gomes</a></span
-      >
-    </footer>
+	<footer class="fixed-bottom d-flex justify-content-center">
+		<span class="text-muted">Desenvolvido por <a
+			href="https://hullick.github.io/">Hullick Bartholo Gomes</a></span>
+	</footer>
 	<script src="./js/app.js"></script>
 </body>
 </html>
