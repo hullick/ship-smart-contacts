@@ -10,17 +10,11 @@ use App\Models\State;
 
 class ContactController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function list(Request $request)
     {
-        //
+        return JsonResponse::create(Contact::all());
     }
-
+    
     public function create(Request $request)
     {        
         $createdContact = Contact::create($request->only([

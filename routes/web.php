@@ -27,6 +27,10 @@ $router->group([
         'uses' => 'Apis\StateController@list'
     ]);
     
+    
+    $router->get('contato', [
+        'uses' => 'Apis\ContactController@list'
+    ]);
     $router->post('contato', [
         'uses' => 'Apis\ContactController@create'
     ]);

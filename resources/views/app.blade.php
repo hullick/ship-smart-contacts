@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Summit</title>
-<link rel="stylesheet" href="./css/app.css" />
+<link rel="stylesheet" href="/public/css/app.css" />
 </head>
 <body>
 	<header class="d-flex flex-row justify-content-center sticky-top bg-white">
@@ -23,6 +23,6 @@
 		<span class="text-muted">Desenvolvido por <a
 			href="https://hullick.github.io/">Hullick Bartholo Gomes</a></span>
 	</footer>
-	<script src="./js/list-contacts.js"></script>
+	<script src="/public/js/list-contacts.js"></script>
 </body>
 </html>

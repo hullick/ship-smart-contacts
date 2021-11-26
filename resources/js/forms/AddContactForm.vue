@@ -133,21 +133,25 @@ export default {
     addContact(event) {
       event.preventDefault();
 
-      this.$services.$contactService.save({
-        name: this.contactName,
-        phoneNumber: this.contactNumber,
-        email: this.lastValidEmail,
-        address: {
-          cep: this.lastCepApiResponse.cep,
-          city: this.lastCepApiResponse.city,
-          district: this.lastCepApiResponse.district,
-          address: this.lastCepApiResponse.address,
-          residenceNumber: this.addressNumber,
-          state: this.$store.state.states.find(
-            (currentState) => currentState.id == this.selectedState
-          ),
-        },
-      });
+      this.$services.$contactService
+        .save({
+          name: this.contactName,
+          phoneNumber: this.contactNumber,
+          email: this.lastValidEmail,
+          address: {
+            cep: this.lastCepApiResponse.cep,
+            city: this.lastCepApiResponse.city,
+            district: this.lastCepApiResponse.district,
+            address: this.lastCepApiResponse.address,
+            residenceNumber: this.addressNumber,
+            state: this.$store.state.states.find(
+              (currentState) => currentState.id == this.selectedState
+            ),
+          },
+        })
+        .then((response) => {
+          // Display success message
+        });
     },
   },
 };
