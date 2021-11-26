@@ -19,3 +19,15 @@ $router->get('/', function () use ($router) {
 $router->get('/adicionar', function () use ($router) {
     return view('add-contact');
 });
+
+$router->group([
+    'prefix' => 'api'
+], function () use ($router) {
+    $router->get('estado', [
+        'uses' => 'Apis\StateController@list'
+    ]);
+    
+    $router->post('contato', [
+        'uses' => 'Apis\ContactController@create'
+    ]);
+});

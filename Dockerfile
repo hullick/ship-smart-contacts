@@ -6,9 +6,14 @@ LABEL version="1.0"
 LABEL description="A ship smart's laravel and vue test."
 
 VOLUME "/var/www/html"
+COPY ./php.ini /usr/local/etc/php
+COPY ./entrypoint.sh /tmp
 
 RUN echo "#Updating OS' packages"
 RUN apt-get update
+
+RUN echo "#Installing mysql extension"
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN echo "#Installing composer"
 
@@ -19,13 +24,8 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN apt install -y unzip && \
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-RUN echo "#Installing NodeJs 14"
+RUN chmod +x ./entrypoint.sh
 
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-apt-get install -y nodejs
+WORKDIR /var/www/html
 
-
-RUN echo "#Installing Python2"
-RUN apt-get install -y python2
-
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+ENTRYPOINT ["sh", "/tmp/entrypoint.sh"]

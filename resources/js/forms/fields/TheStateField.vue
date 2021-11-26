@@ -7,10 +7,15 @@
       aria-label="Selecione o Estado"
       v-on:input="$emit('input', $event.target.value)"
     >
-      <option :selected="!stateAcronym">Abrir o menu</option>
-      <option value="rj" :selected="stateAcronym == 'RJ'">Rio</option>
-      <option value="sp" :selected="stateAcronym == 'SP'">São Paulo</option>
-      <option value="3">Three</option>
+      <option :selected="!stateAcronym" :value="{}">Abrir o menu</option>
+      <option
+        v-for="state in states"
+        :key="state.id"
+        :value="state.id"
+        :selected="stateAcronym == state.acronym"
+      >
+        {{ state.name }}
+      </option>
     </select>
   </div>
 </template>
@@ -30,13 +35,18 @@ export default {
   },
   watch: {
     stateAcronym: function (newState, oldState) {
-      this.$emit('input', newState)
+      this.$emit("input", this.states.find(currentState=>currentState.acronym == newState).id);
     },
   },
   methods: {
     onChangeSelectedState(event) {
       this.selectedState = event.target.value;
     },
+  },
+  beforeCreate() {
+    this.$services.$stateService.list().then((states) => {
+      this.states = states;
+    });
   },
 };
 </script>

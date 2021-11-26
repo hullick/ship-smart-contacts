@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label for="contactName" class="form-label"> Nome do Contato </label>
+    <label for="contactNumber" class="form-label"> Número de Telefone </label>
     <input
       type="text"
       class="form-control"
-      id="contactName"
-      placeholder="Nome do Contato"
+      id="contactNumber"
+      placeholder="Número de Telefone"
       v-on:input="$emit('input', $event.target.value)"
       v-mask="['(##) ####-####', '(##) #####-####']"
     />

@@ -44,7 +44,10 @@
           class="mb-3 col-12 col-lg-9"
           v-bind:address="lastCepApiResponse.address"
         ></the-address-field>
-        <the-address-number-field class="mb-3 col-12 col-lg-3">
+        <the-address-number-field
+          class="mb-3 col-12 col-lg-3"
+          v-model="addressNumber"
+        >
         </the-address-number-field>
       </div>
       <div class="row">
@@ -59,7 +62,6 @@
         </the-contact-number-field>
       </div>
       <div class="row">
-        {{ lastValidEmail }}
         <the-contact-email-field
           class="mb-3 col-12 col-lg-12"
           v-model="lastValidEmail"
@@ -100,10 +102,11 @@ export default {
   data() {
     return {
       cep: "",
-      selectedState: "",
+      selectedState: {},
       contactName: "",
       contactNumber: "",
       lastValidEmail: "",
+      addressNumber: "",
       lastCepApiResponse: {
         address: "",
         address_name: "",
@@ -129,6 +132,22 @@ export default {
   methods: {
     addContact(event) {
       event.preventDefault();
+
+      this.$services.$contactService.save({
+        name: this.contactName,
+        phoneNumber: this.contactNumber,
+        email: this.lastValidEmail,
+        address: {
+          cep: this.lastCepApiResponse.cep,
+          city: this.lastCepApiResponse.city,
+          district: this.lastCepApiResponse.district,
+          address: this.lastCepApiResponse.address,
+          residenceNumber: this.addressNumber,
+          state: this.$store.state.states.find(
+            (currentState) => currentState.id == this.selectedState
+          ),
+        },
+      });
     },
   },
 };

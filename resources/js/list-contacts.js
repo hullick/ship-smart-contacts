@@ -4,7 +4,7 @@ import Vue from "vue";
 import TheContactsListPage from "./pages/TheContactsListPage";
 import ConfirmContactDeleteModel from "./modals/ConfirmContactDeleteModel";
 import Vuex from 'vuex'
-import { services } from "./import-services.js";
+import { services } from "./dependency-injections.js";
 
 Vue.use(Vuex)
 
