@@ -20,16 +20,24 @@ $router->get('/adicionar', function () use ($router) {
     return view('add-contact');
 });
 
+$router->get('/editar/{contactId}', function ($contactId) {
+    return view('detail-contact', [
+        "contactId" => $contactId
+    ]);
+});
+
 $router->group([
     'prefix' => 'api'
 ], function () use ($router) {
     $router->get('estado', [
         'uses' => 'Apis\StateController@list'
     ]);
-    
-    
+
     $router->get('contato', [
         'uses' => 'Apis\ContactController@list'
+    ]);
+    $router->get('contato/{contactId}', [
+        'uses' => 'Apis\ContactController@get'
     ]);
     $router->post('contato', [
         'uses' => 'Apis\ContactController@create'

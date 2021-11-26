@@ -8,12 +8,16 @@ export default class ContactService {
   private readonly axios = axios;
 
   list(): Promise<Contact[]> {
-    return this.axios.get("/public/index.php/api/contato").then((response) => {
-      return response.data;
-    });
+    return this.axios.get("/public/index.php/api/contato").then((response) => response.data);
   }
 
   save(contact: Contact): Promise<AxiosResponse> {
     return this.axios.post("/public/index.php/api/contato", toContactApi(contact));
+  }
+
+  get(contactId: number): Promise<Contact> {
+    return this.axios
+      .get(`/public/index.php/api/contato/${contactId}`)
+      .then((response) => response.data);
   }
 }

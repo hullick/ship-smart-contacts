@@ -1,14 +1,14 @@
 import "reflect-metadata";
 import Vue from "vue";
-import TheAddContactPage from "./pages/TheAddContactPage";
+import TheContactDetailPage from "./pages/TheContactDetailPage";
 import { services } from "./dependency-injections.js";
 import { store } from "./store.js";
 
 new Vue({
-  el: "#add-contact",
+  el: "#detail-contact",
   services: services,
   components: {
-    TheAddContactPage,
+    TheContactDetailPage,
   },
   store: store,
 });

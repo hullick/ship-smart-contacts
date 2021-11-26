@@ -6,17 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
 use App\Models\Address;
-use App\Models\State;
 
 class ContactController extends Controller
 {
+
     public function list(Request $request)
     {
         return JsonResponse::create(Contact::all());
     }
-    
+
+    public function get(Request $request, int $contactId)
+    {
+        return JsonResponse::create(Contact::find($contactId));
+    }
+
     public function create(Request $request)
-    {        
+    {
         $createdContact = Contact::create($request->only([
             "name",
             "phone_number",
@@ -31,9 +36,9 @@ class ContactController extends Controller
             "residence_number",
             "states_id"
         ]);
-        
+
         $addressData["contact_id"] = $createdContact["id"];
-        
+
         Address::create($addressData);
 
         return JsonResponse::create([
