@@ -1,5 +1,8 @@
 <template>
-  <div class="d-flex flex-row card p-3 rounded btn">
+  <div
+    class="d-flex flex-row card p-3 rounded btn"
+    @click="goToContactDetailPage"
+  >
     <div class="d-none d-lg-block col-lg-1 px-3">
       <contact-avatar v-bind:contact="contact"></contact-avatar>
     </div>
@@ -26,6 +29,13 @@ export default {
     contact: {
       type: Contact,
       required: true,
+    },
+  },
+  methods: {
+    goToContactDetailPage() {
+      window.location.href = this.$helpers.$urlHelper.getContactDetailPage(
+        this.contact.id
+      );
     },
   },
 };

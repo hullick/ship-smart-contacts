@@ -50,8 +50,6 @@
   </div>
 </template>
 <script>
-import { ModalEnum } from "../types/modals.ts";
-
 export default {
   data() {
     return {
