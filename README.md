@@ -1,24 +1,20 @@
-# Lumen PHP Framework
+# Agenda da ShipSmart!
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+A aplicação gerada neste projeto tem como intuito efetivar as necessidade identificadas no documento.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Instruções
 
-## Official Documentation
+Instalar uma versão recente do [Node JS (>14)](https://nodejs.org/en/download/package-manager/)
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Instalar o [docker composer](https://docs.docker.com/compose/install/)
 
-## Contributing
+Instalar os pacotes do node com o comando `npm install`
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Buildar as dependências com `npx mix watch`
 
-## Security Vulnerabilities
+Levantar todos os containers com `docker-compose up`
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## TODOS
+- [ ] Validar campos
+- [ ] Incluir conexão com o MongoDB (nunca havia mexido com esse banco de dados e não consegui terminar, apesar de ter levantado a instância, criado um banco ao inicializar o container)
 
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
