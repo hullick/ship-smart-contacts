@@ -20,8 +20,14 @@ $router->get('/adicionar', function () use ($router) {
     return view('add-contact');
 });
 
-$router->get('/editar/{contactId}', function ($contactId) {
+$router->get('/exibir/{contactId}', function ($contactId) {
     return view('detail-contact', [
+        "contactId" => $contactId
+    ]);
+});
+
+$router->get('/editar/{contactId}', function ($contactId) {
+    return view('edit-contact', [
         "contactId" => $contactId
     ]);
 });
@@ -29,6 +35,10 @@ $router->get('/editar/{contactId}', function ($contactId) {
 $router->group([
     'prefix' => 'api'
 ], function () use ($router) {
+    $router->post('file/upload/{publicFolder}', [
+        'uses' => 'Apis\FileController@upload'
+    ]);
+
     $router->get('estado', [
         'uses' => 'Apis\StateController@list'
     ]);
@@ -36,10 +46,22 @@ $router->group([
     $router->get('contato', [
         'uses' => 'Apis\ContactController@list'
     ]);
+    $router->post('contato', [
+        'uses' => 'Apis\ContactController@create'
+    ]);
     $router->get('contato/{contactId}', [
         'uses' => 'Apis\ContactController@get'
     ]);
-    $router->post('contato', [
-        'uses' => 'Apis\ContactController@create'
+    $router->delete('contato/{contactId}', [
+        'uses' => 'Apis\ContactController@delete'
+    ]);
+    $router->patch('contato/{contactId}', [
+        'uses' => 'Apis\ContactController@update'
+    ]);
+    $router->post('contato/associar-avatar/{contactId}/{avatar_filename}', [
+        'uses' => 'Apis\ContactController@associateAvatar'
+    ]);
+    $router->post('contato/trocar-avatar/{contactId}/{avatar_filename}', [
+        'uses' => 'Apis\ContactController@changeAvatar'
     ]);
 });

@@ -5,9 +5,10 @@
       type="text"
       class="form-control"
       id="address"
-      placeholder="Endereço"
-      v-model="address"
       disabled
+      placeholder="Endereço"
+      v-model="addressValue"
+      v-on:input="$emit('input', $event.target.value)"
     />
   </div>
 </template>
@@ -18,6 +19,16 @@ export default {
       type: String,
       required: false,
     },
+  },
+  watch: {
+    address: function (newAddress, oldAddress) {
+      this.addressValue = newAddress;
+    },
+  },
+  data() {
+    return {
+      addressValue: this.address,
+    };
   },
 };
 </script>

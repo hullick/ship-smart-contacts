@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mb-5 pb-5">
     <div
       class="d-flex flex-row my-1"
       v-for="contact in contacts"

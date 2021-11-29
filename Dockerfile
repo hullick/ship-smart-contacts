@@ -24,6 +24,7 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 RUN apt install -y unzip && \
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
+RUN a2enmod rewrite
 RUN chmod +x ./entrypoint.sh
 
 WORKDIR /var/www/html

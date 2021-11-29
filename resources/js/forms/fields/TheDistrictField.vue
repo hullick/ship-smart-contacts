@@ -5,9 +5,10 @@
       type="text"
       class="form-control"
       id="district"
-      placeholder="Bairro"
       disabled
-      v-model="district"
+      placeholder="Bairro"
+      v-model="districtValue"
+      v-on:input="$emit('input', $event.target.value)"
     />
   </div>
 </template>
@@ -18,6 +19,16 @@ export default {
       type: String,
       required: false,
     },
+  },
+  watch: {
+    district: function (newDistrict, oldDistrict) {
+      this.districtValue = newDistrict;
+    },
+  },
+  data() {
+    return {
+      districtValue: this.district,
+    };
   },
 };
 </script>

@@ -1,13 +1,15 @@
 <template>
   <div>
-    <label for="addressNumber" class="form-label"> Número de residência </label>
+    <label for="residenceNumber" class="form-label">
+      Número de residência
+    </label>
     <input
       v-mask="'##########'"
       type="text"
       class="form-control"
-      id="addressNumber"
+      id="residenceNumber"
       placeholder="Número de residência"
-      v-bind:value="addressNumber"
+      v-model="residenceNumbeValue"
       v-on:input="$emit('input', $event.target.value)"
     />
   </div>
@@ -17,9 +19,15 @@ import { mask } from "vue-the-mask";
 
 export default {
   directives: { mask },
+  props: {
+    residenceNumber: {
+      type: String,
+      required: false,
+    },
+  },
   data() {
     return {
-      addressNumber: "",
+      residenceNumbeValue: this.residenceNumber,
     };
   },
 };

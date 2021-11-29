@@ -8,6 +8,7 @@ Homestead.yaml
 /node_modules
 /public/hot
 /public/storage
+/public/fonts
 /storage/*.key
 /vendor
 .env
@@ -32,3 +33,4 @@ composer.phar
 Thumbs.db
 phpunit.xml
 package-lock.json
+/public/avatars

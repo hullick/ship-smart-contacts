@@ -8,4 +8,5 @@ export interface ContactApi {
   address: string;
   residence_number: string;
   states_id: string;
+  avatar_filename: string;
 }

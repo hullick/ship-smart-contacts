@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import "reflect-metadata";
 import Vue from "vue";
 import TheContactsListPage from "./pages/TheContactsListPage";
 import ConfirmContactDeleteModel from "./modals/ConfirmContactDeleteModel";
@@ -8,9 +8,9 @@ import { store } from "./store.js";
 new Vue({
   el: "#list",
   services: services,
-  components: {
-	TheContactsListPage,
-	ConfirmContactDeleteModel
-  },
   store: store,
+  components: {
+    TheContactsListPage,
+    ConfirmContactDeleteModel,
+  },
 });

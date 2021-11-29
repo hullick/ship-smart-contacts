@@ -7,6 +7,7 @@
         d-flex
         align-items-center
         justify-content-center
+        col-12
       "
       v-on:click="onDeleteItemPressed"
     >
@@ -16,7 +17,6 @@
 </template>
 <script>
 import { Contact } from "../types/contact.ts";
-import ModalService from "../services/modal.service.ts";
 import { ModalEnum } from "../types/modals.ts";
 
 export default {

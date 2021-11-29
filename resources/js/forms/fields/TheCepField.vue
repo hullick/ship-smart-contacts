@@ -1,13 +1,13 @@
 <template>
   <div>
-    <label for="cep" class="form-label"> CEP </label>
+    <label for="cep" class="form-label"> CEP</label>
     <input
       v-mask="'#####-###'"
       type="text"
       class="form-control"
       id="cep"
       placeholder="Digite aqui o seu CEP"
-      v-bind:value="cepValue"
+      v-model="cepValue"
       v-on:input="emitValidCep"
     />
   </div>
@@ -17,9 +17,15 @@ import { mask } from "vue-the-mask";
 
 export default {
   directives: { mask },
+  props: {
+    cep: {
+      type: String,
+      required: false,
+    },
+  },
   data() {
     return {
-      cepValue: "",
+      cepValue: this.cep,
     };
   },
   methods: {

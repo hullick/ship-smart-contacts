@@ -23,12 +23,18 @@ class Address extends Model implements AuthenticatableContract, AuthorizableCont
         'district',
         'address',
         'residence_number',
-        "states_id",
-        "contact_id",
+        "state_id",
+        "contact_id"
     ];
-    
+
+    protected $hidden = [
+        "id",
+        "state_id",
+        "contact_id"
+    ];
+
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo(State::class, "state_id");
     }
 }

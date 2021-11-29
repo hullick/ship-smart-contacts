@@ -18,7 +18,8 @@ class CreateContactsTable extends Migration
             $table->timestamps();
 
             $table->string("name", 50);
-            $table->string("email", 100);
+            $table->string("email", 100)->nullable(true);
+            $table->string("avatar_filename", 255)->nullable(true);
             $table->string("phone_number", 15);
         });
     }

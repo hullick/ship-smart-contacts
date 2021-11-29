@@ -8,6 +8,6 @@ export default function toContactApi(contact) {
     email: contact.email,
     phone_number: contact.phoneNumber,
     residence_number: contact.address.residenceNumber,
-    states_id: contact.address.state.id,
+    state_id: contact.address.state.id,
   };
 }

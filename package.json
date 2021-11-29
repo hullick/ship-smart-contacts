@@ -22,6 +22,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@types/bootstrap": "^5.1.6",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/eslint-config-airbnb": "^5.0.2",

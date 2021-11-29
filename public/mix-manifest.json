@@ -2,5 +2,6 @@
     "/js/list-contacts.js": "/js/list-contacts.js",
     "/js/add-contact.js": "/js/add-contact.js",
     "/js/detail-contact.js": "/js/detail-contact.js",
+    "/js/edit-contact.js": "/js/edit-contact.js",
     "/css/app.css": "/css/app.css"
 }

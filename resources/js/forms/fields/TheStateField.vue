@@ -12,7 +12,7 @@
         v-for="state in states"
         :key="state.id"
         :value="state.id"
-        :selected="stateAcronym == state.acronym"
+        :selected="state.id == initialStateId || stateAcronym == state.acronym"
       >
         {{ state.name }}
       </option>
@@ -26,6 +26,10 @@ export default {
       type: String,
       required: false,
     },
+    initialStateId: {
+      type: Number,
+      required: false,
+    },
   },
   data() {
     return {
@@ -35,7 +39,13 @@ export default {
   },
   watch: {
     stateAcronym: function (newState, oldState) {
-      this.$emit("input", this.states.find(currentState=>currentState.acronym == newState).id);
+      if (this.states && this.states.length > 0) {
+        this.$emit(
+          "input",
+          this.states.find((currentState) => currentState.acronym == newState)
+            .id
+        );
+      }
     },
   },
   methods: {
@@ -43,9 +53,13 @@ export default {
       this.selectedState = event.target.value;
     },
   },
-  beforeCreate() {
+  beforeMount() {
     this.$services.$stateService.list().then((states) => {
       this.states = states;
+
+      if (this.initialStateId) {
+        this.$emit("input", this.initialStateId);
+      }
     });
   },
 };

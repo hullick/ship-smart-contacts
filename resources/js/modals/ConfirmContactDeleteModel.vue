@@ -37,14 +37,20 @@
           >
             Cancelar
           </button>
-          <button type="button" class="btn btn-danger">Remover</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            @click="confirmContactDeletion"
+          >
+            Remover
+          </button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { Contact } from "../types/contact.ts";
+import { ModalEnum } from "../types/modals.ts";
 
 export default {
   data() {
@@ -55,6 +61,15 @@ export default {
   watch: {
     "$store.state.lastDeletedContact": function () {
       this.lastDeletedContact = this.$store.state.lastDeletedContact;
+    },
+  },
+  methods: {
+    confirmContactDeletion() {
+      this.$services.$contactService
+        .delete(this.lastDeletedContact.id)
+        .then(() => {
+          window.location.href = this.$helpers.$urlHelper.getListContactsPage();
+        });
     },
   },
 };

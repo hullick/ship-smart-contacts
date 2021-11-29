@@ -10,6 +10,7 @@ use App\Models\State;
 
 class StateController extends Controller
 {
+
     public function list(Request $request)
     {
         return JsonResponse::create(State::all());

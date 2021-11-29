@@ -20,7 +20,8 @@ class Contact extends Model implements AuthenticatableContract, AuthorizableCont
     protected $fillable = [
         'name',
         'email',
-        'phone_number'
+        'phone_number',
+        "avatar_filename"
     ];
 
     public function address()

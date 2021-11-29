@@ -1,6 +1,18 @@
 <template>
-  <div class="rounded-circle bg-danger text-center contact-avatar">
-    <span class="text-white fs-1 lh-1">{{ contact.name[0] }}</span>
+  <div class="rounded-circle bg-danger contact-avatar col-12 h-100">
+    <div
+      class="d-flex align-items-center justify-content-center col-12 h-100"
+      style="margin-top: -100%"
+    >
+      <span class="fs-1 text-white" v-if="!contact.avatarFilename">{{
+        contact.name[0]
+      }}</span>
+      <img
+        :src="getPublicAvatarFolder() + contact.avatarFilename"
+        class="img-fluid rounded-circle col-12"
+        v-if="contact.avatarFilename"
+      />
+    </div>
   </div>
 </template>
 <script>
@@ -13,13 +25,25 @@ export default {
       required: true,
     },
   },
+  methods: {
+    getPublicAvatarFolder() {
+      return "/public/avatars/";
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .contact-avatar {
-  min-height: 48px;
-  min-width: 48px;
-  max-height: 48px;
-  max-width: 48px;
+  padding-top: 100%;
+  position: relative;
+}
+
+.contact-avatar div {
+  position: absolute;
+  margin-top: -100%;
+  // top: 0;
+  // left: 0;
+  // bottom: 0;
+  // right: 0;
 }
 </style>

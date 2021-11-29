@@ -6,8 +6,9 @@
       class="form-control"
       id="contactNumber"
       placeholder="Número de Telefone"
-      v-on:input="$emit('input', $event.target.value)"
       v-mask="['(##) ####-####', '(##) #####-####']"
+      v-model="numberValue"
+      v-on:input="$emit('input', $event.target.value)"
     />
   </div>
 </template>
@@ -15,6 +16,17 @@
 import { mask } from "vue-the-mask";
 export default {
   directives: { mask },
+  props: {
+    number: {
+      type: String,
+      required: false,
+    },
+  },
+  data() {
+    return {
+      numberValue: this.number
+    };
+  },
 };
 </script>
 <style lang="scss" scoped></style>

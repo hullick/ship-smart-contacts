@@ -23,8 +23,14 @@ class CreateAddressTable extends Migration
             $table->string("address", 75);
             $table->string("residence_number", 10);
 
-            $table->foreignId("states_id")->constrained("states");
-            $table->foreignId("contact_id")->constrained("contacts");
+            $table->foreignId("state_id")
+                ->constrained("states")
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->foreignId("contact_id")
+                ->constrained("contacts")
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

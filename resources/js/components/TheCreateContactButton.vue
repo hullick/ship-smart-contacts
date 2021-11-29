@@ -9,7 +9,7 @@
       rounded
       text-decoration-none
     "
-    href="./"
+    :href="$helpers.$urlHelper.getCreateContactPage()"
   >
     <span class="fs-1 lh-1 pb-2">+</span>
   </a>

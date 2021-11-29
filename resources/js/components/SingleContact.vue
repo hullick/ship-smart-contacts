@@ -1,14 +1,14 @@
 <template>
   <div class="d-flex flex-row card p-3 rounded btn">
-    <div class="col-1 d-flex justify-content-center align-items-center">
+    <div class="d-none d-lg-block col-lg-1 px-3">
       <contact-avatar v-bind:contact="contact"></contact-avatar>
     </div>
-    <div class="d-flex flex-row col-10 align-items-center">
+    <div class="d-flex flex-row col-lg-10 col-11 align-items-center">
       <span class="fs-2 lh-1">{{ contact.name }}</span>
     </div>
     <the-delete-contact-button
       v-bind:contact="contact"
-      class="col-1 rounded"
+      class="col-1 d-flex justify-content-center align-items-center"
     ></the-delete-contact-button>
   </div>
 </template>

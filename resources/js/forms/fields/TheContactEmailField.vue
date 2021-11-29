@@ -6,12 +6,24 @@
       class="form-control"
       id="contactEmail"
       placeholder="Email do Contato"
+      v-model="emailValue"
       v-on:input="emitValidEmail"
     />
   </div>
 </template>
 <script>
 export default {
+  props: {
+    email: {
+      type: String,
+      required: false,
+    },
+  },
+  data() {
+    return {
+      emailValue: this.email,
+    };
+  },
   methods: {
     isEmailValid(email) {
       return email.match(

@@ -5,9 +5,10 @@
       type="text"
       class="form-control"
       id="city"
-      placeholder="Cidade"
       disabled
-      v-model="city"
+      placeholder="Cidade"
+      v-model="cityValue"
+      v-on:input="$emit('input', $event.target.value)"
     />
   </div>
 </template>
@@ -18,6 +19,16 @@ export default {
       type: String,
       required: false,
     },
+  },
+  watch: {
+    city: function (newCity, oldCity) {
+      this.cityValue = newCity;
+    },
+  },
+  data() {
+    return {
+      cityValue: this.city,
+    };
   },
 };
 </script>
