@@ -17,4 +17,3 @@ Levantar todos os containers com `docker-compose up`
 ## TODOS
 - [ ] Validar campos
 - [ ] Incluir conexão com o MongoDB (nunca havia mexido com esse banco de dados e não consegui terminar, apesar de ter levantado a instância, criado um banco ao inicializar o container)
-
