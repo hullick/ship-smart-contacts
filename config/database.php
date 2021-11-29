@@ -1,21 +1,20 @@
 <?php
-
 use Illuminate\Support\Str;
 
 return [
 
     /*
-    |--------------------------------------------------------------------------
-    | Default Database Connection Name
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify which of the database connections below you wish
-    | to use as your default connection for all database work. Of course
-    | you may use many connections at once using the Database library.
-    |
-    */
+     * |--------------------------------------------------------------------------
+     * | Default Database Connection Name
+     * |--------------------------------------------------------------------------
+     * |
+     * | Here you may specify which of the database connections below you wish
+     * | to use as your default connection for all database work. Of course
+     * | you may use many connections at once using the Database library.
+     * |
+     */
 
-    'default' => env('DB_CONNECTION', 'mysql1'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -37,8 +36,8 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST'),
-            'port' => env('DB_PORT'),
+            'host' => env('MYSQL_HOST'),
+            'port' => env('MYSQL_PORT'),
             'database' => env('DB_DATABASE'),
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
@@ -50,10 +49,19 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA')
+            ]) : []
         ],
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => env('MONGODB_HOST'),
+            'port'     => env('DB_PORT'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'options' => [
+                'database' => "admin"
+            ],
+        ]
     ],
-    'migrations' => 'migrations',
-
+    'migrations' => 'migrations'
 ];

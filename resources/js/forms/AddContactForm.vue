@@ -8,6 +8,7 @@
         <the-cep-field
           class="mb-3 col-12 col-lg-6"
           v-model="cep"
+          v-on:validChanged="cepValidChanged"
         ></the-cep-field>
         <the-state-field
           class="mb-3 col-12 col-lg-6"
@@ -86,6 +87,7 @@ export default {
   },
   data() {
     return {
+      invalidFields: [],
       cep: "",
       selectedState: {},
       contactName: "",
@@ -151,6 +153,13 @@ export default {
           );
         }
       });
+    },
+    cepValidChanged(cepValid) {
+      if (!cepValid) {
+        if (!this.invalidFields.includes("cep")) {
+          this.invalidFields.push("cep");
+        }
+      }
     },
   },
 };

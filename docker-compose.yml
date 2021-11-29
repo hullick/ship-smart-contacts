@@ -2,7 +2,7 @@
 version: '3.5'
 services:
     laravel.test:
-        container_name: "ship-smart_webapp"
+        container_name: "shipsmart.webapp"
         build:
             context: .
             dockerfile: Dockerfile
@@ -12,10 +12,13 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - ship-smart_network
+            ship-smart_network:
+                ipv4_address: 172.64.0.4
         depends_on:
             - mysql
+            - mongo
     mysql:
+        container_name: "shipsmart.mysql"
         image: 'mysql:8.0'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
@@ -24,11 +27,27 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         networks:
-            - ship-smart_network
+            ship-smart_network:
+                ipv4_address: 172.64.0.3
         healthcheck:
-          test: ["CMD", "mysqladmin", "ping"]
-          retries: 3
-          timeout: 5s
+            test: ["CMD", "mysqladmin", "ping"]
+            retries: 3
+            timeout: 5s
+    mongo:
+        container_name: "shipsmart.mongo"
+        image: mongo
+        restart: always
+        environment:
+            MONGO_NON_ROOT_USERNAME: ${DB_USERNAME}
+            MONGO_NON_ROOT_PASSWORD: ${DB_PASSWORD}
+            MONGO_INITDB_ROOT_USERNAME: ${DB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MONGO_INITDB_DATABASE: ${DB_DATABASE}
+        volumes:
+            - ./mongo.init.sh:/docker-entrypoint-initdb.d/mongo.init.sh
+        networks:
+            ship-smart_network:
+                ipv4_address: 172.64.0.2
 networks:
     ship-smart_network:
        name: ship-smart_network
@@ -36,10 +55,3 @@ networks:
            driver: default
            config:
                - subnet: 172.64.0.0/28
-volumes:
-    sailmysql:
-        driver: local
-    sailredis:
-        driver: local
-    sailmeilisearch:
-        driver: local

@@ -41,6 +41,9 @@ export default {
 
       if (this.isCepValid(cepValue)) {
         this.$emit("input", cepValue);
+        this.$emit("validChanged", true);
+      }else{
+        this.$emit("validChanged", false);
       }
     },
   },

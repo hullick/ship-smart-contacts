@@ -8,6 +8,7 @@ LABEL description="A ship smart's laravel and vue test."
 VOLUME "/var/www/html"
 COPY ./php.ini /usr/local/etc/php
 COPY ./entrypoint.sh /tmp
+COPY pecl-mongodb.ini /usr/local/etc/php/conf.d
 
 RUN echo "#Updating OS' packages"
 RUN apt-get update
@@ -23,6 +24,10 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
 
 RUN apt install -y unzip && \
 php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+RUN echo "#Installing mongodb"
+RUN apt-get install libssl-dev pkg-config -y
+RUN pecl install mongodb
 
 RUN a2enmod rewrite
 RUN chmod +x ./entrypoint.sh
