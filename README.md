@@ -8,11 +8,19 @@ Instalar uma versão recente do [Node JS (>14)](https://nodejs.org/en/download/p
 
 Instalar o [docker composer](https://docs.docker.com/compose/install/)
 
+Copiar o arquivo `.env.app` para `.env`
+
 Instalar os pacotes do node com o comando `npm install`
 
 Buildar as dependências com `npx mix watch`
 
 Levantar todos os containers com `docker-compose up`
+
+Entre no container com o comando `docker exec -it shipsmart.webapp bash`
+
+Migre as tabelas com o comando `php artisan migrate`
+
+Popule a tabela de estados com `php artisan db:seed StatesSeeder`
 
 ## TODOS
 - [ ] Validar campos
