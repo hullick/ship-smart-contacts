@@ -14,7 +14,7 @@ Instalar os pacotes do node com o comando `npm install`
 
 Buildar as dependências com `npx mix build`
 
-Levantar todos os containers com `docker-compose up`
+Levantar todos os containers com `docker-compose up -d`
 
 Entre no container com o comando `docker exec -it shipsmart.webapp bash`
 
