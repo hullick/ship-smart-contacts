@@ -12,7 +12,7 @@ Copiar o arquivo `.env.app` para `.env`
 
 Instalar os pacotes do node com o comando `npm install`
 
-Buildar as dependências com `npx mix watch`
+Buildar as dependências com `npx mix build`
 
 Levantar todos os containers com `docker-compose up`
 
